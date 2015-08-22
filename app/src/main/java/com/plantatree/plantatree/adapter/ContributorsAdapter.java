@@ -60,7 +60,8 @@ public class ContributorsAdapter extends ArrayAdapter<Contributor> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder viewHolder;
-        if(convertView==null){convertView= LayoutInflater.from(getContext()).inflate(R.layout.contributor,parent,false);
+        if(convertView==null){
+            convertView= LayoutInflater.from(getContext()).inflate(R.layout.contributor,parent,false);
             viewHolder=new ViewHolder(convertView);
             convertView.setTag(viewHolder);
         }
@@ -76,7 +77,7 @@ public class ContributorsAdapter extends ArrayAdapter<Contributor> {
         @Bind(R.id.contributor_name)
         TextView contributorName;
         ViewHolder(View view) {
-            ButterKnife.bind(view);
+            ButterKnife.bind(this,view);
         }
     }
 }
