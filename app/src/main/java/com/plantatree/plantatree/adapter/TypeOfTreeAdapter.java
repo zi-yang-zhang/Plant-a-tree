@@ -44,7 +44,7 @@ public class TypeOfTreeAdapter extends ArrayAdapter<Tree> {
     }
     class ViewHolder {
         @Bind(R.id.tree_image)
-        Image treeImage;
+        ImageView treeImage;
         @Bind(R.id.tree_name)
         TextView treeName;
         @Bind(R.id.tree_description)
