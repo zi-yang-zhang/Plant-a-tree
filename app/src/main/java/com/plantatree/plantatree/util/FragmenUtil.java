@@ -6,15 +6,21 @@ import android.app.FragmentManager;
 import android.content.Context;
 
 import com.plantatree.plantatree.R;
+import com.plantatree.plantatree.fragment.AbstractDialogFragment;
 
 /**
  * Created by robertzhang on 2015-08-21.
  */
 public class FragmenUtil {
 	private static String FRAGMENT_TAG = "fragment_tag";
+	private static String DIALOG_FRAGMENT_TAG = "dialog_fragment";
 	public static void switchToFragment(Context context, Fragment fragment){
 		if(context instanceof Activity){
-			((Activity) context).getFragmentManager().beginTransaction().add(R.id.container,fragment,FRAGMENT_TAG).commit();
+			if(fragment instanceof AbstractDialogFragment){
+				((AbstractDialogFragment) fragment).show(((Activity) context).getFragmentManager(), DIALOG_FRAGMENT_TAG);
+			} else{
+				((Activity) context).getFragmentManager().beginTransaction().add(R.id.container,fragment,FRAGMENT_TAG).commit();
+			}
 		}
 	}
 	public static void switchToRootFragment(Context context, Fragment fragment){

@@ -40,8 +40,9 @@ import dagger.Module;
 				TypeOfTreeDialogFragment.class
 
 
-		}
+		},
 
+		complete = false
 
 )
 public class ControllerModule {

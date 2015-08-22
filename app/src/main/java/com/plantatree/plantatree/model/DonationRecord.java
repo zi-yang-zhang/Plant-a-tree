@@ -12,15 +12,9 @@ public class DonationRecord {
 	private Double donationAmount;
 	@Expose
 	private Date donationDate;
+	@Expose
+	private String region;
 
-	@Override
-	public String toString() {
-		final StringBuilder sb = new StringBuilder("DonationRecord{");
-		sb.append("donationAmount=").append(donationAmount);
-		sb.append(", donationDate=").append(donationDate);
-		sb.append('}');
-		return sb.toString();
-	}
 
 	public Double getDonationAmount() {
 		return donationAmount;
