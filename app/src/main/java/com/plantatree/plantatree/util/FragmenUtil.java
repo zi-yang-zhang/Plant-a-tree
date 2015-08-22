@@ -19,7 +19,8 @@ public class FragmenUtil {
 			if(fragment instanceof AbstractDialogFragment){
 				((AbstractDialogFragment) fragment).show(((Activity) context).getFragmentManager(), DIALOG_FRAGMENT_TAG);
 			} else{
-				((Activity) context).getFragmentManager().beginTransaction().add(R.id.container,fragment,FRAGMENT_TAG).commit();
+				((Activity) context).getFragmentManager().beginTransaction().addToBackStack(FRAGMENT_TAG);
+				((Activity) context).getFragmentManager().beginTransaction().replace(R.id.container, fragment, FRAGMENT_TAG).commit();
 			}
 		}
 	}
