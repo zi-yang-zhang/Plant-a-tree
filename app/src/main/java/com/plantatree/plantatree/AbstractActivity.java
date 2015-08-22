@@ -3,7 +3,7 @@ package com.plantatree.plantatree;
 import android.app.Activity;
 import android.os.Bundle;
 
-import com.squareup.otto.Bus;
+import com.squareup.otto.EventBus;
 
 import javax.inject.Inject;
 
@@ -16,7 +16,7 @@ public class AbstractActivity extends Activity {
 	private ObjectGraph mObjectGraph;
 
 	@Inject
-	protected Bus mEventBus;
+	protected EventBus mEventBus;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

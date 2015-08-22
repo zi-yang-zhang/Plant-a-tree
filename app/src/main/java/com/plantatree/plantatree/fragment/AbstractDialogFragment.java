@@ -2,7 +2,7 @@ package com.plantatree.plantatree.fragment;
 
 import android.app.DialogFragment;
 
-import com.squareup.otto.Bus;
+import com.squareup.otto.EventBus;
 
 import javax.inject.Inject;
 
@@ -12,7 +12,7 @@ import javax.inject.Inject;
 public class AbstractDialogFragment extends DialogFragment {
 
 	@Inject
-	protected Bus mEventBus;
+	protected EventBus mEventBus;
 	@Override
 	public void onResume() {
 		super.onResume();
