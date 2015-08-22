@@ -42,7 +42,7 @@ public class ContributorsAdapter extends ArrayAdapter<Contributor> {
                 this.sort(new Comparator<Contributor>() {
                     @Override
                     public int compare(Contributor lhs, Contributor rhs) {
-                        return new Double(lhs.getDonation()).intValue()- new Double(rhs.getDonation()).intValue();
+                        return new Double(rhs.getDonation()).intValue()- new Double(lhs.getDonation()).intValue();
                     }
                 });
                 break;
@@ -50,7 +50,7 @@ public class ContributorsAdapter extends ArrayAdapter<Contributor> {
                 this.sort(new Comparator<Contributor>() {
                     @Override
                     public int compare(Contributor lhs, Contributor rhs) {
-                        return lhs.getFrequency()-rhs.getFrequency();
+                        return rhs.getFrequency()-lhs.getFrequency();
                     }
                 });
                 break;

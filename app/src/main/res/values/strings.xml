@@ -1,3 +1,8 @@
 <resources>
 	<string name="app_name">Plant A Tree</string>
+	<string-array name="contributor_list_mode">
+		<item>Alpha</item>
+		<item>Amount</item>
+		<item>Frequency</item>
+	</string-array>
 </resources>

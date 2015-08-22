@@ -10,9 +10,12 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.plantatree.plantatree.R;
@@ -29,7 +32,7 @@ import butterknife.ButterKnife;
 /**
  * Created by robertzhang on 2015-08-21.
  */
-public class ContributorsFragment extends AbstractFragment {
+public class ContributorsFragment extends AbstractFragment implements AdapterView.OnItemSelectedListener{
     private ContributorsAdapter contributorsAdapter;
     private List<Contributor> contributors;
     private void addFakeContributors(){
@@ -66,6 +69,8 @@ public class ContributorsFragment extends AbstractFragment {
         this.contributors.add(c6);
     }
     MenuItem fav;
+    @Bind(R.id.contributor_sorting_mode)
+    Spinner contributorSortingModeSelector;
     @Bind(R.id.contributor_list)
     ListView contributorList;
     @Nullable
@@ -85,6 +90,11 @@ public class ContributorsFragment extends AbstractFragment {
         super.onViewCreated(view, savedInstanceState);
         contributorsAdapter=new ContributorsAdapter(getActivity(),R.layout.contributor,contributors);
         contributorList.setAdapter(contributorsAdapter);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(),
+                R.array.contributor_list_mode, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        contributorSortingModeSelector.setAdapter(adapter);
+        contributorSortingModeSelector.setOnItemSelectedListener(this);
     }
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -120,4 +130,25 @@ public class ContributorsFragment extends AbstractFragment {
 		ContributorsFragment fragment = new ContributorsFragment();
 		return fragment;
 	}
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        switch (parent.getItemAtPosition(position).toString()){
+            case "Alpha":
+                contributorsAdapter.sort(Constant.ALPHABET);
+                break;
+            case "Amount":
+                contributorsAdapter.sort(Constant.AMOUNT);
+                break;
+            case "Frequency":
+                contributorsAdapter.sort(Constant.FREQUENCY);
+                break;
+        }
+
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
+    }
 }
