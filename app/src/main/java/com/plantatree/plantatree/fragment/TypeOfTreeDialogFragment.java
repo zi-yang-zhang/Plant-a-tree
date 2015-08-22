@@ -37,4 +37,8 @@ public class TypeOfTreeDialogFragment extends AbstractDialogFragment {
         TypeOfTreeAdapter typeOfTreeAdapter= new TypeOfTreeAdapter(getActivity(),R.layout.tree_info,trees);
         typeOfTrees.setAdapter(typeOfTreeAdapter);
     }
+	public static TypeOfTreeDialogFragment newInstance(){
+		TypeOfTreeDialogFragment fragment = new TypeOfTreeDialogFragment();
+		return fragment;
+	}
 }

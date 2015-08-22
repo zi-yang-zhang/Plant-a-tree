@@ -69,4 +69,9 @@ public class ContributorsFragment extends AbstractFragment {
             return super.onOptionsItemSelected(item);
         }
     }
+
+	public static ContributorsFragment newInstance(){
+		ContributorsFragment fragment = new ContributorsFragment();
+		return fragment;
+	}
 }
