@@ -58,6 +58,13 @@ public class TypeOfSpeciesDetailFragment extends AbstractFragment {
         titleView.setText(title);
         descriptionView.setText(description);
 
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getFragmentManager().popBackStack();
+            }
+        });
+
         return rootView;
     }
 
