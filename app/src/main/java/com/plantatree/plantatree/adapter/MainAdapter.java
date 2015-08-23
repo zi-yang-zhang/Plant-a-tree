@@ -71,7 +71,7 @@ public class MainAdapter extends ArrayAdapter<MainAdapter.DataType> {
 	public enum DataType{
 		AVERAGE_HEIGHT("Average Height"),
 		TYPE_OF_TREE("Type of tree"),
-		NUMBER_OF_SPECIES("Type of species"),
+		TYPE_OF_SPECIES("Type of species"),
 		NUMBER_OF_TREE("Number of tree"),
 		GALLERY("Gallery"),
 		CONTRIBUTORS("Contributor");

@@ -9,8 +9,8 @@ import com.plantatree.plantatree.fragment.AbstractFragment;
 import com.plantatree.plantatree.fragment.AverageHeightDialogFragment;
 import com.plantatree.plantatree.fragment.ContributorsFragment;
 import com.plantatree.plantatree.fragment.GalleryFragment;
-import com.plantatree.plantatree.fragment.NumberOfSpeciesDialogFragment;
 import com.plantatree.plantatree.fragment.NumberOfTreeDialogFragment;
+import com.plantatree.plantatree.fragment.TypeOfSpeciesFragment;
 import com.plantatree.plantatree.fragment.TypeOfTreeDialogFragment;
 
 import dagger.Module;
@@ -35,7 +35,7 @@ import dagger.Module;
 				AverageHeightDialogFragment.class,
 				ContributorsFragment.class,
 				GalleryFragment.class,
-				NumberOfSpeciesDialogFragment.class,
+				TypeOfSpeciesFragment.class,
 				NumberOfTreeDialogFragment.class,
 				TypeOfTreeDialogFragment.class
 
