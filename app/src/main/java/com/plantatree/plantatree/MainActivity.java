@@ -3,7 +3,6 @@ package com.plantatree.plantatree;
 import android.os.Bundle;
 
 import com.plantatree.plantatree.fragment.MainDataFragment;
-import com.plantatree.plantatree.receiver.GcmBroadcastReceiver;
 import com.plantatree.plantatree.util.FragmenUtil;
 
 /**
@@ -21,15 +20,8 @@ public class MainActivity extends AbstractActivity {
 	@Override
 	protected void onResume() {
 		super.onResume();
-		if(getIntent().getAction()!=null){
-			if(getIntent().getAction().equals(GcmBroadcastReceiver.ACTION_UPDATE_STATUS)){
-				FragmenUtil.switchToRootFragment(this, MainDataFragment.newInstance(true));
-			}else {
-				FragmenUtil.switchToRootFragment(this, MainDataFragment.newInstance(false));
-			}
-		}else{
-			FragmenUtil.switchToRootFragment(this, MainDataFragment.newInstance(false));
-		}
+		FragmenUtil.switchToRootFragment(this, MainDataFragment.newInstance());
+
 	}
 
 	@Override

@@ -49,13 +49,13 @@ public class MainAdapter extends ArrayAdapter<MainAdapter.DataType> {
 				int newRate = DataType.getRate(mContext, position)+1;
 				DataType.setRate(mContext,position,newRate);
 				viewHolder.rate.setTextColor(Color.RED);
-				sharedPrefHelper.setRateChange(false);
 			}else{
 				viewHolder.rate.setTextColor(Color.BLACK);
 			}
 			String rate = DataType.getRate(mContext,position) + "%";
 			viewHolder.rate.setText(rate);
 		}
+		v.invalidate();
 		v.setTag(viewHolder);
 		return v;
 	}
