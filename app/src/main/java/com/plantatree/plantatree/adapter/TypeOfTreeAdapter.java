@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.plantatree.plantatree.R;
 import com.plantatree.plantatree.model.Tree;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -31,7 +32,7 @@ public class TypeOfTreeAdapter extends ArrayAdapter<Tree> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        final ViewHolder viewHolder;
+        ViewHolder viewHolder;
         if(convertView==null){
             convertView= LayoutInflater.from(getContext()).inflate(R.layout.tree_info,parent,false);
             viewHolder=new ViewHolder(convertView);
@@ -40,6 +41,9 @@ public class TypeOfTreeAdapter extends ArrayAdapter<Tree> {
         else{
             viewHolder=(ViewHolder)convertView.getTag();
         }
+        viewHolder.treeName.setText(getItem(position).getName());
+        viewHolder.treeDescription.setText(getItem(position).getDescription());
+        Picasso.with(getContext()).load(getItem(position).getImageResourceId()).into(viewHolder.treeImage);
         return convertView;
     }
     class ViewHolder {
@@ -50,7 +54,7 @@ public class TypeOfTreeAdapter extends ArrayAdapter<Tree> {
         @Bind(R.id.tree_description)
         TextView treeDescription;
         public ViewHolder(View convertView) {
-            ButterKnife.bind(convertView);
+            ButterKnife.bind(this,convertView);
         }
     }
 }
