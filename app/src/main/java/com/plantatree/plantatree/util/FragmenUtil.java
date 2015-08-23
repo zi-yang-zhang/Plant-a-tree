@@ -3,6 +3,7 @@ package com.plantatree.plantatree.util;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Context;
 
 import com.plantatree.plantatree.R;
@@ -19,8 +20,10 @@ public class FragmenUtil {
 			if(fragment instanceof AbstractDialogFragment){
 				((AbstractDialogFragment) fragment).show(((Activity) context).getFragmentManager(), DIALOG_FRAGMENT_TAG);
 			} else{
-				((Activity) context).getFragmentManager().beginTransaction().addToBackStack(FRAGMENT_TAG).commit();
-				((Activity) context).getFragmentManager().beginTransaction().replace(R.id.container, fragment, FRAGMENT_TAG).commit();
+				FragmentTransaction transaction = ((Activity) context).getFragmentManager().beginTransaction();
+				transaction.addToBackStack(fragment.getClass().getSimpleName());
+				transaction.replace(R.id.container, fragment, fragment.getClass().getSimpleName());
+				transaction.commit();
 			}
 		}
 	}
