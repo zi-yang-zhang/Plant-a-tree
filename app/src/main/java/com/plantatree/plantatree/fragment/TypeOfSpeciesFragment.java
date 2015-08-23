@@ -67,6 +67,13 @@ public class TypeOfSpeciesFragment extends AbstractFragment {
         mAdapter = new TypeOfSpeciesAdapter(mTitles, mDescriptions, mImages, getActivity());
         type_of_species_recycler_view.setAdapter(mAdapter);
 
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getFragmentManager().popBackStack();
+            }
+        });
+
         return rootView;
     }
 }
