@@ -21,6 +21,7 @@ public class TypeOfSpeciesAdapter extends RecyclerView.Adapter<TypeOfSpeciesAdap
 
 
     private String[] mTitles;
+    private String[] mDescriptions;
     private int[] mImages;
     private Context context;
 
@@ -31,6 +32,7 @@ public class TypeOfSpeciesAdapter extends RecyclerView.Adapter<TypeOfSpeciesAdap
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
         public TextView card_view_title;
+        public TextView card_view_description;
         public ImageView card_view_image;
 
         public ViewHolder(View itemLayoutView) {
@@ -42,8 +44,9 @@ public class TypeOfSpeciesAdapter extends RecyclerView.Adapter<TypeOfSpeciesAdap
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public TypeOfSpeciesAdapter(String[] mTitles, int[] mImages, Context context) {
+    public TypeOfSpeciesAdapter(String[] mTitles, String[] mDescriptions, int[] mImages, Context context) {
         this.mTitles = mTitles;
+        this.mDescriptions = mDescriptions;
         this.mImages = mImages;
         this.context = context;
     }
@@ -70,7 +73,7 @@ public class TypeOfSpeciesAdapter extends RecyclerView.Adapter<TypeOfSpeciesAdap
         holder.card_view_image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmenUtil.switchToFragment(context, TypeOfSpeciesDetailFragment.newInstance(mImages[position], mTitles[position]));
+                FragmenUtil.switchToFragment(context, TypeOfSpeciesDetailFragment.newInstance(mImages[position], mTitles[position], mDescriptions[position]));
             }
         });
     }

@@ -29,11 +29,12 @@ public class TypeOfSpeciesDetailFragment extends AbstractFragment {
     @Bind(R.id.container) LinearLayout container;
     @Bind(R.id.toolbar) Toolbar toolbar;
 
-    public  static TypeOfSpeciesDetailFragment newInstance(int image, String title){
+    public  static TypeOfSpeciesDetailFragment newInstance(int image, String title, String description){
         TypeOfSpeciesDetailFragment fragment = new TypeOfSpeciesDetailFragment();
         Bundle bundle=new Bundle();
         bundle.putInt("image", image);
         bundle.putString("title", title);
+        bundle.putString("description", description);
         fragment.setArguments(bundle);
         return fragment;
     }
@@ -47,6 +48,7 @@ public class TypeOfSpeciesDetailFragment extends AbstractFragment {
 
         int image = getArguments().getInt("image");
         String title = getArguments().getString("title");
+        String description = getArguments().getString("description");
 
         Bitmap bitmap = BitmapFactory.decodeResource(getResources(), image);
         imageView.setImageBitmap(bitmap);
@@ -54,6 +56,7 @@ public class TypeOfSpeciesDetailFragment extends AbstractFragment {
         colorize(bitmap);
 
         titleView.setText(title);
+        descriptionView.setText(description);
 
         return rootView;
     }
