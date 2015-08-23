@@ -1,30 +1,19 @@
 package com.plantatree.plantatree.adapter;
 
-import android.app.ActionBar;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.graphics.Bitmap;
 import android.graphics.drawable.ColorDrawable;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.widget.AbsListView;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
-import android.widget.GridLayout;
 import android.widget.GridView;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.RelativeLayout;
 
-import com.plantatree.plantatree.R;
-import com.plantatree.plantatree.util.FragmenUtil;
 import com.squareup.picasso.Picasso;
-import com.squareup.picasso.Transformation;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -67,7 +56,7 @@ public class GalleryGridImageAdapter extends BaseAdapter {
             imageView = (ImageView) convertView;
         }
 
-        Picasso.with(mContext).load(trees.get(position)).into(imageView);
+        Picasso.with(mContext).load(trees.get(position)).fit().into(imageView);
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

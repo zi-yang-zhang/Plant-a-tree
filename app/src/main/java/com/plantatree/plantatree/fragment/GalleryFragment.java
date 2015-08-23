@@ -1,28 +1,16 @@
 package com.plantatree.plantatree.fragment;
 
-import android.app.Dialog;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.GridView;
-import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.plantatree.plantatree.R;
 import com.plantatree.plantatree.adapter.GalleryGridImageAdapter;
 import com.plantatree.plantatree.util.TreeResourceList;
-
-import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -63,6 +51,9 @@ public class GalleryFragment extends AbstractFragment {
         timeTitle1.setText("2015-01-12");
         timeTitle2.setText("2015-03-14");
         timeTitle3.setText("2015-06-11");
+        gallery1.setNumColumns(5);
+        gallery2.setNumColumns(5);
+        gallery3.setNumColumns(5);
         gallery1.setAdapter(new GalleryGridImageAdapter(getActivity(), TreeResourceList.getTrees().subList(0, 4)));
         gallery2.setAdapter(new GalleryGridImageAdapter(getActivity(),TreeResourceList.getTrees().subList(5,10)));
         gallery3.setAdapter(new GalleryGridImageAdapter(getActivity(), TreeResourceList.getTrees().subList(11, TreeResourceList.getTrees().size() - 1)));

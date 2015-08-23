@@ -1,14 +1,11 @@
 package com.plantatree.plantatree.adapter;
 
 import android.content.Context;
-import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.plantatree.plantatree.R;
@@ -43,7 +40,7 @@ public class TypeOfTreeAdapter extends ArrayAdapter<Tree> {
         }
         viewHolder.treeName.setText(getItem(position).getName());
         viewHolder.treeDescription.setText(getItem(position).getDescription());
-        Picasso.with(getContext()).load(getItem(position).getImageResourceId()).into(viewHolder.treeImage);
+        Picasso.with(getContext()).load(getItem(position).getImageResourceId()).fit().into(viewHolder.treeImage);
         return convertView;
     }
     class ViewHolder {
