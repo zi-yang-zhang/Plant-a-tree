@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
 import android.widget.TextView;
+import android.widget.Toolbar;
 
 import com.plantatree.plantatree.R;
 import com.plantatree.plantatree.adapter.GalleryGridImageAdapter;
@@ -31,6 +32,8 @@ public class GalleryFragment extends AbstractFragment {
     GridView gallery2;
     @Bind(R.id.gallery_content_3)
     GridView gallery3;
+    @Bind(R.id.toolbar)
+    Toolbar toolbar;
 
 	public static GalleryFragment newInstance(){
 		GalleryFragment galleryFragment = new GalleryFragment();
@@ -58,7 +61,12 @@ public class GalleryFragment extends AbstractFragment {
         gallery2.setAdapter(new GalleryGridImageAdapter(getActivity(),TreeResourceList.getTrees().subList(5,10)));
         gallery3.setAdapter(new GalleryGridImageAdapter(getActivity(), TreeResourceList.getTrees().subList(11, TreeResourceList.getTrees().size() - 1)));
 
-
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getFragmentManager().popBackStack();
+            }
+        });
     }
 
 }

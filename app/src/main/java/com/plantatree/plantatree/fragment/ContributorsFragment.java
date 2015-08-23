@@ -17,6 +17,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toolbar;
 
 import com.plantatree.plantatree.R;
 import com.plantatree.plantatree.adapter.ContributorsAdapter;
@@ -33,6 +34,10 @@ import butterknife.ButterKnife;
  * Created by robertzhang on 2015-08-21.
  */
 public class ContributorsFragment extends AbstractFragment implements AdapterView.OnItemSelectedListener{
+
+    @Bind(R.id.toolbar)
+    Toolbar toolbar;
+
     private ContributorsAdapter contributorsAdapter;
     private List<Contributor> contributors;
     private void addFakeContributors(){
@@ -76,12 +81,18 @@ public class ContributorsFragment extends AbstractFragment implements AdapterVie
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        setHasOptionsMenu(true);
         View view=inflater.inflate(R.layout.contributor_fragment,container,false);
         this.contributors=new ArrayList<>();
         addFakeContributors();
         ButterKnife.bind(this, view);
-        setHasOptionsMenu(true);
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getFragmentManager().popBackStack();
+            }
+        });
+
         return view;
     }
 
