@@ -12,7 +12,7 @@
         android:theme="@style/ToolbarTheme"
         android:background="@color/purple"
         android:navigationIcon="@drawable/logo"
-        ></android.widget.Toolbar>
+        />
 
     <ListView
         android:layout_width="wrap_content"

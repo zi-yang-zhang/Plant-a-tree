@@ -10,6 +10,7 @@ import android.os.Bundle;
 
 import com.google.android.gms.gcm.GoogleCloudMessaging;
 import com.plantatree.plantatree.MainActivity;
+import com.plantatree.plantatree.R;
 import com.plantatree.plantatree.manager.bus.events.UpdateEvent;
 import com.plantatree.plantatree.util.SharedPrefHelper;
 import com.squareup.otto.EventBus;
@@ -51,7 +52,7 @@ public class GcmBroadcastReceiver extends BroadcastReceiver{
 		contentIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 		PendingIntent pendingIntent = PendingIntent.getActivity(context,123,contentIntent,PendingIntent.FLAG_ONE_SHOT);
 		Notification.Builder notificationBuilder= (new Notification.Builder(context))
-				.setSmallIcon(android.R.drawable.sym_def_app_icon)
+				.setSmallIcon(R.mipmap.app_logo)
 				.setContentTitle("Forest status update")
 				.setContentText("Your forest has grown up!")
 				.setContentIntent(pendingIntent)
