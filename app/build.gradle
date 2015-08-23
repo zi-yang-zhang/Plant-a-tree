@@ -33,9 +33,9 @@ dependencies {
     testCompile 'junit:junit:4.12'
 
 //    network dependencies
-    
 
-    apt 'com.squareup.dagger:dagger-compiler:1.2.2'
+
+    provided 'com.squareup.dagger:dagger-compiler:1.2.2'
 
     
     

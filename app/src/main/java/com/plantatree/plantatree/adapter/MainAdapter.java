@@ -1,12 +1,14 @@
 package com.plantatree.plantatree.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.plantatree.plantatree.R;
+import com.plantatree.plantatree.util.SharedPrefHelper;
 
 /**
  * Created by robertzhang on 2015-08-22.
@@ -42,6 +44,20 @@ public class MainAdapter extends ArrayAdapter<MainAdapter.DataType> {
 		}
 		if(DataType.getDataTypeById(position)!=null){
 			viewHolder.name.setText(DataType.getDataTypeById(position).getName());
+			SharedPrefHelper sharedPrefHelper = new SharedPrefHelper(mContext);
+			if(sharedPrefHelper.getRateChange()){
+				int oldRate = DataType.getRate(mContext, position);
+				int newRate = oldRate++;
+				DataType.setRate(mContext,position,newRate);
+				viewHolder.rate.setTextColor(Color.RED);
+				sharedPrefHelper.setRateChange(false);
+			}else{
+				viewHolder.rate.setTextColor(Color.BLACK);
+			}
+			String rate = DataType.getRate(mContext,position) + "%";
+
+			viewHolder.rate.setText(rate);
+
 		}
 		v.setTag(viewHolder);
 		return v;
@@ -65,10 +81,54 @@ public class MainAdapter extends ArrayAdapter<MainAdapter.DataType> {
 			this.name = name;
 		}
 
+
 		public String getName(){
 			return name;
 		}
+		public static int getRate(Context context, int id){
+			SharedPrefHelper sharedPrefHelper = new SharedPrefHelper(context);
+			switch (id){
+				case 0:
+					return sharedPrefHelper.getAverageHeight();
 
+				case 1:
+					return sharedPrefHelper.getTypeOfTree();
+				case 2:
+					return sharedPrefHelper.getNumberOfSpecies();
+				case 3:
+					return sharedPrefHelper.getNumberOfTree();
+				case 4:
+					return sharedPrefHelper.getGallery();
+				case 5:
+					return sharedPrefHelper.getContributor();
+			}
+			return 0;
+		}
+
+
+		public static void setRate(Context context, int id, int rate){
+			SharedPrefHelper sharedPrefHelper = new SharedPrefHelper(context);
+			switch (id){
+				case 0:
+					sharedPrefHelper.setAverageHeight(rate);
+					break;
+				case 1:
+					sharedPrefHelper.setTypeOfTree(rate);
+					break;
+				case 2:
+					sharedPrefHelper.setNumberOfSpecies(rate);
+					break;
+				case 3:
+					sharedPrefHelper.setNumberOfTree(rate);
+					break;
+				case 4:
+					sharedPrefHelper.setGallery(rate);
+					break;
+				case 5:
+					sharedPrefHelper.setContributor(rate);
+					break;
+			}
+		}
 		public static DataType getDataTypeById(int id){
 			for (DataType dataType: values()){
 				if(dataType.ordinal()==id){
@@ -78,6 +138,8 @@ public class MainAdapter extends ArrayAdapter<MainAdapter.DataType> {
 			return null;
 		}
 	}
+
+
 	class ViewHolder{
 		TextView name;
 		TextView rate;

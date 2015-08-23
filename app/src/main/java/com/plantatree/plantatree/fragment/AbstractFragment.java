@@ -1,6 +1,10 @@
 package com.plantatree.plantatree.fragment;
 
 import android.app.Fragment;
+import android.os.Bundle;
+import android.util.Log;
+
+import com.squareup.otto.EventBus;
 
 /**
  * Created by robertzhang on 2015-08-21.
@@ -8,16 +12,25 @@ import android.app.Fragment;
 public class AbstractFragment extends Fragment {
 
 //	@Inject
-//	protected EventBus mEventBus;
+	protected EventBus mEventBus;
+
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		mEventBus = EventBus.newInstance();
+	}
+
 	@Override
 	public void onResume() {
 		super.onResume();
-//		mEventBus.register(this);
+		Log.d(this.getClass().getName(), "registered bus");
+		mEventBus.register(this);
 	}
 
 	@Override
 	public void onPause() {
 		super.onPause();
-//		mEventBus.unregister(this);
+		Log.d(this.getClass().getName(), "unregistered bus");
+		mEventBus.unregister(this);
 	}
 }

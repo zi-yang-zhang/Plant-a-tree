@@ -10,7 +10,6 @@ public class DaggerManager {
 
 	public static List<Object> getDaggerModules(){
 		return Arrays.asList(
-				new BusModule(),
 				new ManagerModule(),
 				new ControllerModule()
 		);

@@ -7,6 +7,13 @@ import android.util.Log;
  */
 public class EventBus extends Bus{
 	private static final String  TAG = EventBus.class.getName();
+	private static EventBus instance;
+	public static EventBus newInstance(){
+		if(instance == null){
+			instance = new EventBus();
+		}
+		return instance;
+	}
 	@Override
 	public void post(Object event) {
 		Exception ex = new Exception();

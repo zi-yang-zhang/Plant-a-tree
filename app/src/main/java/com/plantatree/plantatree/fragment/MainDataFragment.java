@@ -10,7 +10,9 @@ import android.widget.ListView;
 
 import com.plantatree.plantatree.R;
 import com.plantatree.plantatree.adapter.MainAdapter;
+import com.plantatree.plantatree.manager.bus.events.UpdateEvent;
 import com.plantatree.plantatree.util.FragmenUtil;
+import com.squareup.otto.Subscribe;
 
 /**
  * Created by robertzhang on 2015-08-22.
@@ -18,6 +20,16 @@ import com.plantatree.plantatree.util.FragmenUtil;
 public class MainDataFragment extends AbstractFragment implements AdapterView.OnItemClickListener {
 	private ListView mMainContainer;
 	private MainAdapter mAdapter;
+	private static final String UPDATE = "update";
+
+	public static MainDataFragment newInstance(boolean update){
+		MainDataFragment mainDataFragment = new MainDataFragment();
+		Bundle extra = new Bundle();
+		extra.putBoolean(UPDATE, update);
+		mainDataFragment.setArguments(extra);
+		return mainDataFragment;
+
+	}
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -41,6 +53,11 @@ public class MainDataFragment extends AbstractFragment implements AdapterView.On
 		super.onViewCreated(view, savedInstanceState);
 		mMainContainer.setAdapter(mAdapter);
 		mMainContainer.setOnItemClickListener(this);
+		if(getArguments()!=null){
+			if(getArguments().getBoolean(UPDATE)){
+				mAdapter.notifyDataSetInvalidated();
+			}
+		}
 
 	}
 
@@ -72,5 +89,9 @@ public class MainDataFragment extends AbstractFragment implements AdapterView.On
 				FragmenUtil.switchToFragment(getActivity(),ContributorsFragment.newInstance());
 				break;
 		}
+	}
+	@Subscribe
+	public void handleUpdateEvent(UpdateEvent event){
+		mAdapter.notifyDataSetInvalidated();
 	}
 }
