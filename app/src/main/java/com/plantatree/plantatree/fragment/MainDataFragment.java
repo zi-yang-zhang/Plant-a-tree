@@ -59,8 +59,8 @@ public class MainDataFragment extends AbstractFragment implements AdapterView.On
 			case NUMBER_OF_TREE:
 				FragmenUtil.switchToFragment(getActivity(),NumberOfTreeDialogFragment.newInstance());
 				break;
-			case NUMBER_OF_SPECIES:
-				FragmenUtil.switchToFragment(getActivity(), NumberOfSpeciesDialogFragment.newInstance());
+			case TYPE_OF_SPECIES:
+				FragmenUtil.switchToFragment(getActivity(), TypeOfSpeciesFragment.newInstance());
 				break;
 			case TYPE_OF_TREE:
 				FragmenUtil.switchToFragment(getActivity(), TypeOfTreeDialogFragment.newInstance());
