@@ -35,7 +35,7 @@ public class GcmBroadcastReceiver extends BroadcastReceiver{
 		if (extras != null && !extras.isEmpty()) {  // has effect of unparcelling Bundle
 			// Since we're not using two way messaging, this is all we really to check for
 			if (GoogleCloudMessaging.MESSAGE_TYPE_MESSAGE.equals(messageType)) {
-				mEventBus = new EventBus();
+				mEventBus = EventBus.newInstance();
 				mEventBus.post(new UpdateEvent());
 				Logger.getLogger("GCM_RECEIVED").log(Level.INFO, extras.toString());
 				SharedPrefHelper sharedPrefHelper = new SharedPrefHelper(context);

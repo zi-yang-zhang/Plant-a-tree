@@ -46,8 +46,7 @@ public class MainAdapter extends ArrayAdapter<MainAdapter.DataType> {
 			viewHolder.name.setText(DataType.getDataTypeById(position).getName());
 			SharedPrefHelper sharedPrefHelper = new SharedPrefHelper(mContext);
 			if(sharedPrefHelper.getRateChange()){
-				int oldRate = DataType.getRate(mContext, position);
-				int newRate = oldRate++;
+				int newRate = DataType.getRate(mContext, position)+1;
 				DataType.setRate(mContext,position,newRate);
 				viewHolder.rate.setTextColor(Color.RED);
 				sharedPrefHelper.setRateChange(false);
@@ -55,9 +54,7 @@ public class MainAdapter extends ArrayAdapter<MainAdapter.DataType> {
 				viewHolder.rate.setTextColor(Color.BLACK);
 			}
 			String rate = DataType.getRate(mContext,position) + "%";
-
 			viewHolder.rate.setText(rate);
-
 		}
 		v.setTag(viewHolder);
 		return v;
@@ -90,7 +87,6 @@ public class MainAdapter extends ArrayAdapter<MainAdapter.DataType> {
 			switch (id){
 				case 0:
 					return sharedPrefHelper.getAverageHeight();
-
 				case 1:
 					return sharedPrefHelper.getTypeOfTree();
 				case 2:

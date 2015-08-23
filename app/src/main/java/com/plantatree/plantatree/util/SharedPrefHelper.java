@@ -15,6 +15,7 @@ public class SharedPrefHelper {
 	private static final String NUMBER_OF_TREE = "number_of_tree";
 	private static final String GALLERY = "gallery";
 	private static final String CONTRIBUTOR = "contributor";
+	private static final String DONATED = "donated";
 
 
 	public SharedPrefHelper(Context context){
@@ -72,4 +73,10 @@ public class SharedPrefHelper {
 		return sharedPreferences.getInt(CONTRIBUTOR, 4);
 	}
 
+	public void setDonated(boolean donated){
+		sharedPreferences.edit().putBoolean(DONATED, donated).commit();
+	}
+	public boolean getDonated(){
+		return sharedPreferences.getBoolean(DONATED, false);
+	}
 }

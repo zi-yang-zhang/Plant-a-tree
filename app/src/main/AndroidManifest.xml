@@ -22,9 +22,12 @@
         <activity
             android:name=".MainActivity"
             android:label="Plant a Tree" >
+        </activity>
+        <activity
+            android:name=".DonateActivity"
+            android:label="Plant a Tree" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
