@@ -66,10 +66,8 @@ public class MainAdapter extends ArrayAdapter<MainAdapter.DataType> {
 	}
 
 	public enum DataType{
-		AVERAGE_HEIGHT("Average Height"),
 		TYPE_OF_TREE("Type of tree"),
 		TYPE_OF_SPECIES("Type of species"),
-		NUMBER_OF_TREE("Number of tree"),
 		GALLERY("Gallery"),
 		CONTRIBUTORS("Contributor");
 
@@ -86,16 +84,12 @@ public class MainAdapter extends ArrayAdapter<MainAdapter.DataType> {
 			SharedPrefHelper sharedPrefHelper = new SharedPrefHelper(context);
 			switch (id){
 				case 0:
-					return sharedPrefHelper.getAverageHeight();
-				case 1:
 					return sharedPrefHelper.getTypeOfTree();
-				case 2:
+				case 1:
 					return sharedPrefHelper.getNumberOfSpecies();
-				case 3:
-					return sharedPrefHelper.getNumberOfTree();
-				case 4:
+				case 2:
 					return sharedPrefHelper.getGallery();
-				case 5:
+				case 3:
 					return sharedPrefHelper.getContributor();
 			}
 			return 0;
@@ -106,21 +100,15 @@ public class MainAdapter extends ArrayAdapter<MainAdapter.DataType> {
 			SharedPrefHelper sharedPrefHelper = new SharedPrefHelper(context);
 			switch (id){
 				case 0:
-					sharedPrefHelper.setAverageHeight(rate);
-					break;
-				case 1:
 					sharedPrefHelper.setTypeOfTree(rate);
 					break;
-				case 2:
+				case 1:
 					sharedPrefHelper.setNumberOfSpecies(rate);
 					break;
-				case 3:
-					sharedPrefHelper.setNumberOfTree(rate);
-					break;
-				case 4:
+				case 2:
 					sharedPrefHelper.setGallery(rate);
 					break;
-				case 5:
+				case 3:
 					sharedPrefHelper.setContributor(rate);
 					break;
 			}

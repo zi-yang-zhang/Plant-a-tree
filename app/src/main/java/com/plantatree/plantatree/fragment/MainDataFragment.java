@@ -78,17 +78,11 @@ public class MainDataFragment extends AbstractFragment implements AdapterView.On
 			case GALLERY:
 				FragmenUtil.switchToFragment(getActivity(),GalleryFragment.newInstance());
 				break;
-			case NUMBER_OF_TREE:
-				FragmenUtil.switchToFragment(getActivity(),NumberOfTreeDialogFragment.newInstance());
-				break;
 			case TYPE_OF_SPECIES:
 				FragmenUtil.switchToFragment(getActivity(), TypeOfSpeciesFragment.newInstance());
 				break;
 			case TYPE_OF_TREE:
 				FragmenUtil.switchToFragment(getActivity(), TypeOfTreeDialogFragment.newInstance());
-				break;
-			case AVERAGE_HEIGHT:
-				FragmenUtil.switchToFragment(getActivity(),AverageHeightDialogFragment.newInstance());
 				break;
 			case CONTRIBUTORS:
 				FragmenUtil.switchToFragment(getActivity(),ContributorsFragment.newInstance());
@@ -102,6 +96,8 @@ public class MainDataFragment extends AbstractFragment implements AdapterView.On
 
 	@Override
 	public void onClick(View v) {
+		SharedPrefHelper sharedPrefHelper = new SharedPrefHelper(getActivity());
+		sharedPrefHelper.setDonated(false);
 		startActivity(new Intent(getActivity(), DonateActivity.class));
 
 	}

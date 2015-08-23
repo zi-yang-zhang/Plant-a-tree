@@ -59,14 +59,9 @@ public class TypeOfTreeDialogFragment extends AbstractDialogFragment {
         t7.setDescription("Bipinnately compound leaves with 10–20 pairs of leaflets on each pinnae; flowers white, in round heads 2–2.5 cm in diameter; “giant” forms are distinguished from L. diversifolia by two, 1–2 mm wide round glands on the leaf stalk at the first and last pair of pinnae of most leaves.");
         t7.setImageResourceId(TreeResourceList.getTrees().get(7));
         trees.add(t7);
-        Tree t8=new Tree();
-        t8.setName("Litchi chinensis");
-        t8.setDescription("Short stocky trunk; often broad crown; compound leaves with 2–5 pairs of oblong-lanceolate leaflets; yellow-white flowers, red to purple, round fruits, about 3 cm in diameter, with flat warts.");
-        t8.setImageResourceId(TreeResourceList.getTrees().get(8));
         trees.add(t1);
         trees.add(t2);
         trees.add(t3);
-        trees.add(t8);
     }
     @Nullable
     @Override
